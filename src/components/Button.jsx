@@ -1,9 +1,9 @@
 //Presentational component
-import React from 'react';
+import React from "react";
 
 //stateless component does not need to be a class
- const Button = ({buttonDisplayName, clickHandler}) => (
-     <button onClick={clickHandler}>{buttonDisplayName}</button>
- );
+const Button = ({ buttonDisplayName, clickHandler }) => (
+  <button onClick={clickHandler}id='new-quote'>{buttonDisplayName}</button>
+);
 
- export default Button;
+export default Button;

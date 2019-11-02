@@ -1,9 +1,9 @@
 import React from "react";
 
-const Text = (props) => {
+const Text = ({quote}) => {
   return (
     <div id="text">
-      <p></p>
+      <p>{quote}</p>
     </div>
   );
 };

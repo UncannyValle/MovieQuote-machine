@@ -8,11 +8,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       quoteList: [],
-      quote: '',
-      quoteIndex: null
+      quoteIndex: null,
     };
     this.chooseQuoteIndex = this.chooseQuoteIndex.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.clicker = this.clicker.bind(this);
+    // this.chosenQuote = this.chosenQuote.bind(this);
   }
 
   componentDidMount() {
@@ -20,24 +21,40 @@ class App extends React.Component {
       "https://raw.githubusercontent.com/vilaboim/movie-quotes/e72e64502486d9d9d528277a1dbe94f20f011bc6/movie-quotes.json"
     )
       .then(data => data.json())
-      .then(quoteList => this.setState({ quoteList }));
+      .then(quoteList =>
+        this.setState({ quoteList }, () => {
+          this.setState({
+            quoteIndex: this.chooseQuoteIndex()
+          });
+        })
+      );
   }
 
   chooseQuoteIndex() {
-    this.setState({
-      quoteIndex: Math.floor(Math.random() * this.state.quoteList.length - 1),
-      quote: (this.state.quoteList[this.state.quoteIndex]).search(/\d/)
-    });
-    console.log(this.state.quote);
+    if (!this.state.quoteList.length) {
+      return;
+    }
+    return Math.floor(Math.random() * this.state.quoteList.length - 1);
   }
+  get chosenQuote() {
+    if (
+      !this.state.quoteList.length ||
+      !Number.isInteger(this.state.quoteIndex)
+    ) {
+      return;
+    }
+    return (this.state.quoteList[this.state.quoteIndex]).match(/"(?:[^"\\]|\\.)*"/);
+  }
+clicker(){
+  this.setState({
+    quoteIndex: this.chooseQuoteIndex()
+  })
+}
   render() {
     return (
       <div className="App" id="quote-box">
-        <Text />
-        <Button
-          buttonDisplayName={"Hit Me"}
-          clickHandler={this.chooseQuoteIndex}
-        />
+        <Text quote={this.chosenQuote} />
+        <Button buttonDisplayName={"Hit Me"} clickHandler={this.clicker} />
       </div>
     );
   }
