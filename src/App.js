@@ -1,8 +1,6 @@
 import React from "react";
 import "./App.css";
-import Button from "./components/Button";
-// import Text from "./components/Text";
-
+import Quotes from "./components/Quotes";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -20,9 +18,7 @@ class App extends React.Component {
       "https://raw.githubusercontent.com/vilaboim/movie-quotes/e72e64502486d9d9d528277a1dbe94f20f011bc6/movie-quotes.json"
     )
       .then(data => data.json())
-      .then(quoteList =>
-        this.setState({ quoteList }, this.getQuote)
-      );
+      .then(quoteList => this.setState({ quoteList }, this.getQuote));
   }
 
   chooseQuoteIndex() {
@@ -36,23 +32,33 @@ class App extends React.Component {
       quoteIndex: this.chooseQuoteIndex()
     });
   }
- get chosenQuote() {
+  get chosenQuote() {
     if (
       !this.state.quoteList.length ||
       !Number.isInteger(this.state.quoteIndex)
     ) {
       return null;
     }
-    return this.state.quoteList[this.state.quoteIndex].match(
-      /"(?:[^"\\]|\\.)*"/
-    );
+    return this.state.quoteList[this.state.quoteIndex].match(/^".*"/);
   }
-  
+  get chosenAuthor() {
+    if (
+      !this.state.quoteList.length ||
+      !Number.isInteger(this.state.quoteIndex)
+    ) {
+      return null;
+    } else {
+      let authorWithQuotation = this.state.quoteList[this.state.quoteIndex].match(/" .*$/);
+     return  authorWithQuotation[0].split('').slice(2).join('')
+    }
+    
+  }
+
   render() {
     return (
       <div className="App" id="quote-box">
-        {this.chosenQuote ? this.chosenQuote : ''}
-        <Button buttonDisplayName={"Hit Me"} clickHandler={this.getQuote} />
+        <h1>Movie Quote Generator</h1>
+        <Quotes chosenQuote={this.chosenQuote} getQuote={this.getQuote} chosenAuthor={this.chosenAuthor}/>
       </div>
     );
   }
