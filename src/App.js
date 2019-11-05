@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Quotes from "./components/Quotes";
 class App extends React.Component {
   constructor(props) {
