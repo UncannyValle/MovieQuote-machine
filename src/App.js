@@ -67,16 +67,18 @@ class App extends React.Component {
   render() {
     return (
       <div className="App" id="quote-box">
-        <h1>Movie Quote Generator</h1>
-        <Quotes
-          chosenQuote={this.chosenQuote}
-          getQuote={this.getQuote}
-          chosenAuthor={this.chosenAuthor}
-        />
-        <Button
-          clickHandler={this.getQuote}
-          buttonDisplayName={"More Movie Magic"}
-        />
+        <h1 id="title">Movie Quote Generator</h1>
+        <div className="card">
+          <Quotes
+            chosenQuote={this.chosenQuote}
+            getQuote={this.getQuote}
+            chosenAuthor={this.chosenAuthor}
+          />
+          <Button
+            clickHandler={this.getQuote}
+            buttonDisplayName={"More Movie Magic"}
+          />
+        </div>
       </div>
     );
   }
