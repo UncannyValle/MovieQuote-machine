@@ -1,7 +1,9 @@
 import React from "react";
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Quotes from "./components/Quotes";
+// import  Button  from 'react-bootstrap/Button';
+import Button from "./components/Button";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,7 @@ class App extends React.Component {
     this.getQuote = this.getQuote.bind(this);
     // this.chosenQuote = this.chosenQuote.bind(this);
   }
-// As soon as the page loads the API is fetched and state is set for a random quote to be displayed
+  // As soon as the page loads the API is fetched and state is set for a random quote to be displayed
   componentDidMount() {
     fetch(
       "https://raw.githubusercontent.com/vilaboim/movie-quotes/e72e64502486d9d9d528277a1dbe94f20f011bc6/movie-quotes.json"
@@ -70,6 +72,10 @@ class App extends React.Component {
           chosenQuote={this.chosenQuote}
           getQuote={this.getQuote}
           chosenAuthor={this.chosenAuthor}
+        />
+        <Button
+          clickHandler={this.getQuote}
+          buttonDisplayName={"More Movie Magic"}
         />
       </div>
     );
