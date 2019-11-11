@@ -13,7 +13,7 @@
   width: 80vw;
   height: 50vh;
   position: relative;
-  bottom:10vh;
+  bottom: 10vh;
 }
 #title {
   font-size: 4em;
@@ -23,21 +23,43 @@
 #text {
   color: black;
   font-size: 1.5em;
-  margin:1.5em;
+  margin: 1.5em;
 }
 #author {
   font-style: italic;
   color: black;
-  margin-top: 2em;
 }
 #new-quote {
   position: absolute;
-  top:55vh;
+  top: 55vh;
   width: 30vh;
-  left:0;
-  right:0;
-  margin:0 auto;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 #icon {
-  color:black;
+  color: black;
+}
+#tweet-quote {
+  position: fixed;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 60vh;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  #title {
+    font-size: 3em;
+    top:.5vh;
+  }
+  .card {
+    height: 65vh;
+    top: 3vh;
+  }
+  #tweet-quote{
+    top:70vh;
+  }
+  #new-quote{
+    top:55vh;
+  }
 }
