@@ -53,13 +53,14 @@
     top:.5vh;
   }
   .card {
-    height: 65vh;
+    height: 70vh;
     top: 3vh;
+    width:95vw;
   }
   #tweet-quote{
-    top:70vh;
+    top:75vh;
   }
   #new-quote{
-    top:55vh;
+    top:60vh;
   }
 }
