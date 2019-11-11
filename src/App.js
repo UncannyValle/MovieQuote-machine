@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Quotes from "./components/Quotes";
-// import  Button  from 'react-bootstrap/Button';
 import Button from "./components/Button";
+import twitterIcon from "./twitter-icon.png";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -65,6 +65,7 @@ class App extends React.Component {
   }
 
   render() {
+    // const {quote} = this.chosenQuote;
     return (
       <div className="App" id="quote-box">
         <h1 id="title">Movie Quote Generator</h1>
@@ -78,6 +79,18 @@ class App extends React.Component {
             clickHandler={this.getQuote}
             buttonDisplayName={"More Movie Magic"}
           />
+
+          <a
+            id="tweet-quote"
+            class="twitter-share-button"
+            href={`https://twitter.com/intent/tweet?text=${this.chosenQuote}${this.chosenAuthor}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Tweet the Quote!"
+          >
+            <br />
+            <img src={twitterIcon} alt="twitter icon"></img>
+          </a>
         </div>
       </div>
     );
