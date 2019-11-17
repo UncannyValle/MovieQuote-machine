@@ -8,6 +8,8 @@
   font-size: calc(10px + 2vmin);
   color: red;
   height: 100vh;
+  top: 0;
+  bottom: 0;
 }
 .card {
   width: 80vw;
@@ -50,17 +52,17 @@
 @media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
   #title {
     font-size: 3em;
-    top:.5vh;
+    top: 0.5vh;
   }
   .card {
     height: 70vh;
     top: 3vh;
-    width:95vw;
+    width: 95vw;
   }
-  #tweet-quote{
-    top:75vh;
+  #tweet-quote {
+    top: 75vh;
   }
-  #new-quote{
-    top:60vh;
+  #new-quote {
+    top: 60vh;
   }
 }
