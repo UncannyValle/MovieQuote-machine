@@ -1,68 +1,76 @@
-.App {
+.app {
   text-align: center;
   background-color: black;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  height: 100vh;
+}
+.card {
+  max-width: 1068px;
+  min-height: 60vh;
+  margin: 0 auto;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: red;
-  height: 100vh;
-  top: 0;
-  bottom: 0;
-}
-.card {
-  width: 80vw;
-  height: 50vh;
-  position: relative;
-  bottom: 10vh;
+  justify-content: space-evenly;
 }
 #title {
   font-size: 4em;
-  position: relative;
-  bottom: 15vh;
+  color: red;
+}
+.subtitle {
+  margin: 2rem 1rem;
 }
 #text {
   color: black;
   font-size: 1.5em;
-  margin: 1.5em;
 }
 #author {
   font-style: italic;
   color: black;
 }
 #new-quote {
-  position: absolute;
-  top: 55vh;
-  width: 30vh;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+  width: 50vw;
 }
 #icon {
   color: black;
 }
-#tweet-quote {
-  position: fixed;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  top: 60vh;
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+@media (max-width: 1024px) {
   #title {
-    font-size: 3em;
-    top: 0.5vh;
+    font-size: 4rem;
+  }
+  .subtitle {
+    font-size: 2rem;
+    /* width: 60vw; */
+    margin: 2rem auto;
   }
   .card {
-    height: 70vh;
-    top: 3vh;
+    width: 75vw;
+    height: auto;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #title {
+    font-size: 3em;
+  }
+  .card {
+    height: auto;
     width: 95vw;
   }
-  #tweet-quote {
-    top: 75vh;
+}
+@media (max-width: 576px) {
+  #title {
+    font-size: 2.5rem;
   }
-  #new-quote {
-    top: 60vh;
+  .subtitle {
+    font-size: 0.8rem;
+  }
+  .card {
+    width: 90vw;
+    height: auto;
+    padding: 0.5rem;
   }
 }

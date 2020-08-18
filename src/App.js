@@ -4,12 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Quotes from "./components/Quotes";
 import Button from "./components/Button";
 import twitterIcon from "./twitter-icon.png";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       quoteList: [],
-      quoteIndex: null
+      quoteIndex: null,
     };
     this.chooseQuoteIndex = this.chooseQuoteIndex.bind(this);
     this.getQuote = this.getQuote.bind(this);
@@ -20,8 +21,8 @@ class App extends React.Component {
     fetch(
       "https://raw.githubusercontent.com/vilaboim/movie-quotes/e72e64502486d9d9d528277a1dbe94f20f011bc6/movie-quotes.json"
     )
-      .then(data => data.json())
-      .then(quoteList => this.setState({ quoteList }, this.getQuote));
+      .then((data) => data.json())
+      .then((quoteList) => this.setState({ quoteList }, this.getQuote));
   }
   // Randomizes a number to be used as the index for going through quote API
   chooseQuoteIndex() {
@@ -33,7 +34,7 @@ class App extends React.Component {
   //Function called upon click to get new quote
   getQuote() {
     this.setState({
-      quoteIndex: this.chooseQuoteIndex()
+      quoteIndex: this.chooseQuoteIndex(),
     });
   }
   //Get Function that returns the randomized quote as an object, uses a regex that parses through the API quote and only returns the quote and not the author
@@ -57,18 +58,20 @@ class App extends React.Component {
       let authorWithQuotation = this.state.quoteList[
         this.state.quoteIndex
       ].match(/" .*$/);
-      return authorWithQuotation[0]
-        .split("")
-        .slice(2)
-        .join("");
+      return authorWithQuotation[0].split("").slice(2).join("");
     }
   }
 
   render() {
     // const {quote} = this.chosenQuote;
     return (
-      <div className="App" id="quote-box">
+      <div className="app" id="quote-box">
         <h1 id="title">Movie Quote Generator</h1>
+        <p className="subtitle">
+          Classic movie quotes for the whole family! <br />
+          Click on More Movie Magic for more quotes and make sure to tweet them
+          out if you find any you like!
+        </p>
         <div className="card">
           <Quotes
             chosenQuote={this.chosenQuote}
@@ -82,7 +85,7 @@ class App extends React.Component {
 
           <a
             id="tweet-quote"
-            class="twitter-share-button"
+            className="twitter-share-button"
             href={`https://twitter.com/intent/tweet?text=${this.chosenQuote}${this.chosenAuthor}`}
             target="_blank"
             rel="noopener noreferrer"
